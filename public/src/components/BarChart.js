@@ -4,20 +4,23 @@ import * as d3 from 'd3';
 
 
 class BarChart extends Component {
+    constructor(props) {
+        super(props)
+    }
 
     chartRef = React.createRef();
-   
+
     componentDidMount() {
         const ctx = this.chartRef.current.getContext("2d");
-        let filename = "data/maize_top_ten.csv";
 
-        d3.csv(filename, function (error, data) {
-            if (error) {
-                throw error;
-            }
-        
-            let country_labels = data.map(function (d) { return d.countries });
-            let maize_data = data.map(function (d) { return +d.MZ_2000 });
+        const mydatacol = String(this.props.datacol);
+        const mydatatitles = String(this.props.suptitle);
+
+        d3.csv(this.props.filename).then(function (data) {
+            //console.log(data)
+
+            let country_labels = data.map(function (d) { return d['countries'] });
+            let df = data.map(function (d) { return +d[mydatacol] });
             let country_colors = [
                 'rgba(255, 99, 132)',
                 'rgba(255, 159, 64)',
@@ -30,14 +33,14 @@ class BarChart extends Component {
                 'rgba(230, 50, 100)',
                 'rgba(245, 50, 50)'
             ]
-        
+
             new Chart(ctx, {
                 type: 'bar',
                 options: {
                     plugins: {
                         title: {
-                            display:true,
-                            text: 'Top 10 countries of maize production average 2000 to 2006 in t (FAO)',
+                            display: true,
+                            text: mydatatitles,
                             padding: {
                                 top: 10,
                                 bottom: 30
@@ -52,25 +55,25 @@ class BarChart extends Component {
                     },
                     scales: {
                         x: {
-                            
+
                             title: {
-                                display:true,
+                                display: true,
                                 text: 'Countries',
                                 align: 'center',
                                 padding: 10
-                              }
-        
+                            }
+
                         },
                         y: {
-                            
+
                             title: {
-                                display:true,
-                                text: 'Maize per tonne',
+                                display: true,
+                                text: 'production average 2000 to 2006 in t (FAO)',
                                 align: 'center'
-                              }
-        
+                            }
+
                         }
-                        
+
                     },
                     transitions: {
                         show: {
@@ -100,25 +103,25 @@ class BarChart extends Component {
                     datasets: [
                         {
                             label: 'Hide/Unhide chart',
-                            data: maize_data,
+                            data: df,
                             backgroundColor: country_colors
                         }
                     ]
                 }
             })
-        });
-
+        }).catch(function (err) {
+            throw err;
+        })
     }
-
 
     render() {
         return (
             <div>
-                <canvas id="myChart" width="1200" height="600" ref={this.chartRef}></canvas>
+                <canvas width="1200" height="600" ref={this.chartRef}></canvas>
             </div>
         );
     }
-
 }
+
 
 export default BarChart;
