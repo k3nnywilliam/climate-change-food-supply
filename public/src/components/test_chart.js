@@ -22,7 +22,7 @@ d3.csv(filename, function (error, data) {
         'rgba(245, 50, 50)'
     ]
 
-    let myChart = new Chart('myChart', {
+    let myChart = new Chart(ctx, {
         type: 'bar',
         options: {
             plugins: {
