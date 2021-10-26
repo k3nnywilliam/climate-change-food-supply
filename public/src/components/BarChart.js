@@ -5,7 +5,7 @@ import * as d3 from 'd3';
 
 class BarChart extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     chartRef = React.createRef();
@@ -17,10 +17,9 @@ class BarChart extends Component {
         const mydatatitles = String(this.props.suptitle);
 
         d3.csv(this.props.filename).then(function (data) {
-            //console.log(data)
 
-            let country_labels = data.map(function (d) { return d['countries'] });
-            let df = data.map(function (d) { return +d[mydatacol] });
+            const country_labels = data.map(function (d) { return d['countries'] });
+            const df = data.map(function (d) { return +d[mydatacol] });
             let country_colors = [
                 'rgba(255, 99, 132)',
                 'rgba(255, 159, 64)',
@@ -110,14 +109,16 @@ class BarChart extends Component {
                 }
             })
         }).catch(function (err) {
+            console.log('ERROR: Missing data')
             throw err;
+       
         })
     }
 
     render() {
         return (
             <div>
-                <canvas width="1200" height="600" ref={this.chartRef}></canvas>
+                <canvas width={this.props.width} height={this.props.height} ref={this.chartRef}></canvas>
             </div>
         );
     }

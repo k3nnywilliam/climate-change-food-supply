@@ -4,12 +4,15 @@ import BarChart from './BarChart.js';
 
 class App extends Component {
     render() {
-        let maize_data = "data/maize_top_ten.csv";
-        let rice_data = "data/rice_top_ten.csv";
-        let wheat_data = "data/wheat_top_ten.csv";
+        let maize_data = "src/csv_files/maize_top_ten.csv";
+        let rice_data = "src/csv_files/rice_top_ten.csv";
+        let wheat_data = "src/csv_files/wheat_top_ten.csv";
         let maize_col  = "MZ_2000";
         let rice_col  = "RI_2000";
         let wheat_col  = "WH_2000";
+
+        const width = 1200;
+        const height = 600;
 
         let maize_title = "Top 10 countries of maize production average 2000 to 2006 in t (FAO)";
         let rice_title = "Top 10 countries of rice production average 2000 to 2006 in t (FAO)";
@@ -26,9 +29,9 @@ class App extends Component {
                 </p>
                 <div id="title">Maize Production</div>
                
-                 <BarChart filename={maize_data} datacol={maize_col} suptitle={maize_title} />
-                 <BarChart filename={rice_data} datacol={rice_col} suptitle={rice_title} />
-                 <BarChart filename={wheat_data} datacol={wheat_col} suptitle={wheat_title} />
+                 <BarChart filename={maize_data} datacol={maize_col} suptitle={maize_title} width={width} height = {height} />
+                 <BarChart filename={rice_data} datacol={rice_col} suptitle={rice_title} width={width} height={height} />
+                 <BarChart filename={wheat_data} datacol={wheat_col} suptitle={wheat_title} width={width} height={height} />
                
             </Fragment>
         ];
