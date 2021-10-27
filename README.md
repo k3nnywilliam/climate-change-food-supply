@@ -1,11 +1,10 @@
 # Data Visualization on Effects of Climate Change on Food Supply
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/k3nnywilliam/climate-change-food-supply/blob/main/world-food-supply.ipynb)
+
+[![Build Status](https://app.travis-ci.com/k3nnywilliam/climate-change-food-supply.svg?branch=main)](https://app.travis-ci.com/k3nnywilliam/climate-change-food-supply)
 
 ![Alt text](public/images/wheat.jpg?raw=true "Title")
 ***
-
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/k3nnywilliam/climate-change-food-supply/blob/main/world-food-supply.ipynb)
-
 
 <b>Motivation:</b>
 
@@ -15,6 +14,7 @@ Reproducing studies on climate change effects on food production into a web-base
 
 To provide an assessment of potential climate change impacts on world crop production.
 
+***
 
 <b>Data source:</b>
 
