@@ -1,7 +1,8 @@
-import React, { Component, Fragment, lazy } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import BarChart from './BarChart.js';
 import {data} from './DataVariables.js';
+
 import img from './images/wheat.jpg';
 import maize_data from "./csv_files/maize_top_ten.csv";
 import rice_data from "./csv_files/rice_top_ten.csv";
