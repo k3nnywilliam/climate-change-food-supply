@@ -1,21 +1,32 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const port = process.env.PORT || 3000;
-
 module.exports = {
-  mode: 'development',  
+  mode: 'development',
   entry: './public/src/index.js',
   output: {
-    filename: 'bundle.[hash].js'
+    filename: 'bundle.[fullhash].js',
+    clean: true
   },
   devtool: 'inline-source-map',
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.(png|jpe?g|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 8000,
+              name: 'images/[name].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
@@ -32,18 +43,30 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(txt|csv)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'csv_files/[name].[ext]',
+              emitFile: true,
+            }
+          }
+        ]
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
+      hash: true,
+      title: 'Climate Change Impact on Food Production',
+      header: 'Climate Change Effects On Food Supply',
+      favicon: 'public/images/favicon.ico',
       template: 'public/index.html',
+      filename: 'index.html',
+      inject: 'body'
     })
   ],
-  devServer: {
-    host: 'localhost',
-    port: port,
-    historyApiFallback: true,
-    open: true
-  }
 };
