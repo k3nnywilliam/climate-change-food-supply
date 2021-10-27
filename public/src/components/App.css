@@ -6,3 +6,8 @@
     letter-spacing: -0.01em;
     color: #333;
   }
+
+#header {
+  font-family: 'Lato';
+  text-align: center;
+}
