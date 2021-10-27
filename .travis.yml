@@ -4,9 +4,12 @@ node_js:
 cache:
   directories:
     - node_modules
+before_install:
+  - npm install -g codecov
 script:
   - npm test
   - npm run build || true
+  - codecov
 deploy:
   provider: s3
   access_key_id: "YOUR AWS ACCESS KEY"
