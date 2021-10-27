@@ -2,10 +2,12 @@
   "name": "climate-change-food-supply",
   "version": "1.0.0",
   "description": "Web chart",
-  "main": "./public/src/components/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "start": "node server.js --mode production",
+    "build": "webpack --mode production",
+    "dev": "webpack serve --mode development",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
     "chart.js": "^3.5.1",
     "csv-loader": "^3.0.3",
     "d3": "^7.1.1",
+    "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
@@ -34,10 +37,19 @@
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
+    "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.4.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.4.0",
     "jest": "^27.3.1",
-    "ts-loader": "^9.2.6"
+    "jest-cli": "^27.3.1",
+    "react-test-renderer": "^17.0.2",
+    "ts-loader": "^9.2.6",
+    "url-loader": "^4.1.1"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
