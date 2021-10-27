@@ -3,7 +3,7 @@
 
 [![Build Status](https://app.travis-ci.com/k3nnywilliam/climate-change-food-supply.svg?branch=main)](https://app.travis-ci.com/k3nnywilliam/climate-change-food-supply)
 
-![Alt text](public/images/wheat.jpg?raw=true "Title")
+![Alt text](public/src/components/images/wheat.jpg?raw=true "Title")
 ***
 
 <b>Motivation:</b>
